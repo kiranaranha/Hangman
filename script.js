@@ -1,16 +1,20 @@
 
 //global variables
 var word = '';
-var easyWords = ['cat', 'dog', 'mouse', 'horse', 'apple', 'banana', 'stop', 'lamp', 'tree', 'happy', 'life', 'dirt', 'computer'];
-var mediumWords = ['operating system', 'procrastination', 'lynx', 'solar system', 'watermelon', 'asparagus', 'sandwich'];
-var hardWords = ['endoplasmic reticulum', 'megalomaniac', 'xylophone', 'australopithecus', 'declaration', 'extraterrestrial', 'organisms', 'advantageous', 'iteration']
+var easyWords = ['cat', 'dog', 'mouse', 'horse', 'apple', 'banana', 'stop', 'lamp', 'tree', 'happy', 'life', 'dirt',
+    'computer'];
+var mediumWords = ['operating system', 'procrastination', 'lynx', 'solar system', 'watermelon', 'asparagus',
+    'sandwich'];
+var hardWords = ['endoplasmic reticulum', 'megalomaniac', 'xylophone', 'australopithecus', 'declaration',
+    'extraterrestrial', 'spaghetti', 'advantageous', 'iteration'];
 var guesses = 0;
+var wrongLetters = [];
+var letterList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 function letterButtons(){
-    var letterList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-    document.getElementById("letterButtons").innerHTML = '';
+    document.getElementById("letterBox").innerHTML = '';
     for(var i = 0; i <= 25; i++){
-        document.getElementById("letterButtons").innerHTML += "<button name=" + "'" + letterList[i] + "'" + "class='button' onclick='handleGuess()'>" + letterList[i] + "</button>"
+        document.getElementById("letterBox").innerHTML += "<option value=" + "'" + letterList[i] + "'" + ">" + letterList[i] + "</option>";
     }
 }
 
@@ -34,12 +38,16 @@ function hangmanImage(){
 }
 
 function handleGuess(){
+    if(word.includes(document.getElementById("letterBox").value){
 
+    }
 }
 
 function startGame(){
     getWord();
     letterButtons();
+
     document.getElementById("output").innerHTML = word;
-    document.getElementById("image").innerHTML = "<img src=" + "'" + hangmanImage() + "'" + "/>";
+    document.getElementById("image").innerHTML = "<img src= " + "'" + hangmanImage() + "'" + "/>";
+    document.getElementById("makeGuessButton").innerHTML = "<button class='button' onclick='handleGuess()'>Make guess!</button>";
 }
