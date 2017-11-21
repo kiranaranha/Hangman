@@ -11,7 +11,7 @@ var guesses = 0;
 var wrongLetters = [];
 var letterList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
-function letterButtons(){
+function letterBox(){
     document.getElementById("letterBox").innerHTML = '';
     for(var i = 0; i <= 25; i++){
         document.getElementById("letterBox").innerHTML += "<option value=" + "'" + letterList[i] + "'" + ">" + letterList[i] + "</option>";
@@ -37,17 +37,32 @@ function hangmanImage(){
     return "images/" + guesses + ".jpg";
 }
 
-function handleGuess(){
-    if(word.includes(document.getElementById("letterBox").value){
 
+
+function handleGuess(){
+    document.getElementById("message").innerHTML = '';
+    if(wrongLetters.includes(document.getElementById("letterBox").value)) {
+        document.getElementById("message").innerHTML = 'You have already guessed this letter! Please choose another letter.';
+    }else if(word.includes(document.getElementById("letterBox").value)){
+        return 0;
+    }else{
+        guesses += 1;
+        wrongLetters.push(document.getElementById("letterBox").value);
     }
+    document.getElementById("wrongLetters").innerHTML = 'Guessed Letter: ' + wrongLetters;
+    hangmanImage();
+    document.getElementById("image").innerHTML = "<img src= " + "'" + hangmanImage() + "'" + "/>";
 }
 
 function startGame(){
+    guesses = 0;
+    wrongLetters = [];
+    document.getElementById("wrongLetters").innerHTML = '';
+    document.getElementById("message").innerHTML = '';
     getWord();
-    letterButtons();
-
     document.getElementById("output").innerHTML = word;
     document.getElementById("image").innerHTML = "<img src= " + "'" + hangmanImage() + "'" + "/>";
-    document.getElementById("makeGuessButton").innerHTML = "<button class='button' onclick='handleGuess()'>Make guess!</button>";
+    document.getElementById("letterMenu").innerHTML = "<select id = 'letterBox' onclick='letterBox()'>\n" +
+        "        </select>";
+    document.getElementById("makeGuessButton").innerHTML = "<button onclick=\"handleGuess()\">Make guess!</button>";
 }

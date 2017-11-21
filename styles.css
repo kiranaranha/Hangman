@@ -17,3 +17,7 @@ body {
     display: inline-block;
     font-size: 20px;
 }
+
+#wrongLetters {
+    border: 3px solid green;
+}
