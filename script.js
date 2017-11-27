@@ -48,7 +48,7 @@ function wordDisplay(){
 
 function handleGuess(){
     document.getElementById("message").innerHTML = '';
-    if(wrongLetters.includes(document.getElementById("letterBox").value)) {
+    if(wrongLetters.includes(document.getElementById("letterBox").value)){
         document.getElementById("message").innerHTML = 'You have already guessed this letter! Please choose another letter.';
     }else if(word.includes(document.getElementById("letterBox").value)){
         for(var i = 0; i < word.length; i++){
