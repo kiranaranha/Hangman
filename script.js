@@ -13,6 +13,7 @@ var letterList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm
 var dash = '';
 
 function letterBox(){
+    var letterList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     document.getElementById("letterBox").innerHTML = '';
     for(var i = 0; i <= 25; i++){
         document.getElementById("letterBox").innerHTML += "<option value=" + "'" + letterList[i] + "'" + ">" + letterList[i] + "</option>";
@@ -86,7 +87,8 @@ function startGame(){
     getWord();
     document.getElementById("output").innerHTML = wordDisplay();
     document.getElementById("image").innerHTML = "<img src= " + "'" + hangmanImage() + "'" + "/>";
-    document.getElementById("letterMenu").innerHTML = "<select id = 'letterBox' onclick='letterBox()'>\n" +
+    document.getElementById("letterMenu").innerHTML = "<select id = 'letterBox'>\n" +
         "        </select>";
-    document.getElementById("makeGuessButton").innerHTML = "<button onclick=\"handleGuess()\">Make guess!</button>";
+    letterBox();
+    document.getElementById("makeGuessButton").innerHTML = "<button onclick=\"handleGuess()\" >Make guess!</button>";
 }
